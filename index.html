@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TravelEase: The smartest day-by-day travel itinerary planner for modern explorers.">
+    <meta name="keywords" content="Travel, Itinerary, Planner, Smart, Collaboration">
+    <title>TravelEase | Smart Itinerary Planner</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body { font-family: 'Open Sans', sans-serif; }
+        h1, h2, h3, .logo-text { font-family: 'Montserrat', sans-serif; }
+        .fade-in { animation: fadeIn 0.6s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        /* Smooth scrolling for anchor links */
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <nav class="sticky top-0 z-50 bg-white shadow-md px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="text-2xl font-bold text-[#2E86C1]">TravelEase</div>
+            
+            <button id="menu-btn" class="block md:hidden text-gray-700 focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+
+            <ul class="hidden md:flex space-x-8 font-semibold">
+                <li><a href="index.html" class="text-[#F39C12]">Home</a></li>
+                <li><a href="#services" class="hover:text-[#F39C12] transition">Services</a></li>
+                <li><a href="about.html" class="hover:text-[#F39C12] transition">About</a></li>
+                <li><a href="contact.html" class="hover:text-[#F39C12] transition">Contact</a></li>
+            </ul>
+        </div>
+
+        <div id="mobile-menu" class="hidden flex flex-col space-y-4 mt-4 pb-4 font-semibold md:hidden border-t pt-4">
+            <a href="index.html" class="text-[#F39C12]">Home</a>
+            <a href="#services">Services</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+
+    <header class="relative h-[70vh] flex items-center justify-center text-center text-white bg-black">
+        <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1" alt="Travel Banner" class="absolute inset-0 w-full h-full object-cover opacity-60">
+        <div class="relative z-10 px-4">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">Plan Your Next Escape</h1>
+            <p class="text-lg md:text-xl mb-8">Smart scheduling, map pinning, and group collaboration.</p>
+            <a href="#planner" class="bg-[#F39C12] px-10 py-4 rounded-full font-bold text-lg hover:bg-orange-600 transition shadow-lg">Start Planning</a>
+        </div>
+    </header>
+
+    <section id="planner" class="py-16 bg-white border-b">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <h2 class="text-3xl font-bold text-[#2E86C1] text-center mb-8">Trip Itinerary Generator</h2>
+            <div class="bg-gray-100 p-8 rounded-3xl shadow-inner border border-gray-200">
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div>
+                        <label class="block font-semibold mb-2">Destination</label>
+                        <input type="text" id="dest" placeholder="e.g. Paris" class="w-full p-3 rounded-xl border outline-none focus:ring-2 focus:ring-[#F39C12]">
+                    </div>
+                    <div>
+                        <label class="block font-semibold mb-2">Start Date</label>
+                        <input type="date" id="start" class="w-full p-3 rounded-xl border outline-none focus:ring-2 focus:ring-[#2E86C1]">
+                    </div>
+                    <div>
+                        <label class="block font-semibold mb-2">End Date</label>
+                        <input type="date" id="end" class="w-full p-3 rounded-xl border outline-none focus:ring-2 focus:ring-[#2E86C1]">
+                    </div>
+                </div>
+                <button onclick="generateItinerary()" class="w-full mt-8 bg-[#2E86C1] text-white py-4 rounded-xl font-bold text-lg hover:bg-blue-700 transition transform hover:scale-[1.01]">
+                    Build My Smart Plan
+                </button>
+            </div>
+
+            <div id="itinerary-result" class="mt-12 space-y-6"></div>
+        </div>
+    </section>
+
+    <section id="services" class="py-20 container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-12 text-[#2E86C1]">Our Features</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-[#F39C12] hover:shadow-2xl transition">
+                <div class="text-4xl mb-4">📅</div>
+                <h3 class="text-xl font-bold mb-2">Smart Scheduling</h3>
+                <p class="text-gray-600">Automated logic that picks activities based on your trip length.</p>
+            </div>
+            <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-[#2E86C1] hover:shadow-2xl transition">
+                <div class="text-4xl mb-4">📍</div>
+                <h3 class="text-xl font-bold mb-2">Interactive Map</h3>
+                <p class="text-gray-600">Visualise your travel pins and coordinates on a live map.</p>
+            </div>
+            <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-[#F39C12] hover:shadow-2xl transition">
+                <div class="text-4xl mb-4">👥</div>
+                <h3 class="text-xl font-bold mb-2">Collaborate</h3>
+                <p class="text-gray-600">Share your stored database itineraries with fellow travelers.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-[#2E86C1] mb-8">Pinned Locations</h2>
+            <div class="rounded-3xl overflow-hidden shadow-2xl h-[400px] border-4 border-white">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.9916256937595!2d2.292292615673894!3d48.85837360862272!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e2964e34e2d%3A0x8ddca979a6223a5!2sEiffel%20Tower!5e0!3m2!1sen!2sfr!4v1647230000000!5m2!1sen!2sfr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-white py-12 text-center">
+        <p>© 2026 TravelEase Planner | Professional Web Project</p>
+    </footer>
+
+    <script>
+        // Hamburger Menu Toggle
+        const btn = document.getElementById('menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Smart Itinerary Generation
+        function generateItinerary() {
+            const dest = document.getElementById('dest').value;
+            const startDate = document.getElementById('start').value;
+            const endDate = document.getElementById('end').value;
+            const resultDiv = document.getElementById('itinerary-result');
+
+            if (!dest || !startDate || !endDate) {
+                alert("Please complete the destination and date fields.");
+                return;
+            }
+
+            const start = new Date(startDate);
+            const end = new Date(endDate);
+            if (end < start) {
+                alert("End date must be after start date.");
+                return;
+            }
+
+            const diffDays = Math.ceil(Math.abs(end - start) / (1000 * 60 * 60 * 24)) + 1;
+
+            // Varied activities for the "Brain" requirement
+            const activities = [
+                { m: "Historical city walk", a: "Main museum tour", e: "Welcome dinner at local bistro" },
+                { m: "Nature park visit", a: "Hidden street photography", e: "Sunset rooftop views" },
+                { m: "Local market breakfast", a: "Cooking class experience", e: "Theater or cultural show" },
+                { m: "River cruise or bike ride", a: "Art district exploration", e: "Night market food tour" },
+                { m: "Boutique shopping", a: "Gardens and architecture", e: "Cozy local cafe experience" }
+            ];
+
+            let htmlContent = `
+                <div class="fade-in">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-8 text-center border-b-2 border-[#F39C12] inline-block w-full">
+                        Day-by-Day Journey in ${dest}
+                    </h3>
+                    <div class="space-y-4">
+            `;
+
+            for (let i = 1; i <= diffDays; i++) {
+                const plan = activities[(i - 1) % activities.length];
+                htmlContent += `
+                    <div class="bg-white p-6 rounded-2xl shadow border-l-8 border-[#2E86C1] hover:translate-x-2 transition-transform duration-300">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-[#F39C12] font-bold text-xl uppercase tracking-widest">Day ${i}</span>
+                            <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded font-bold">Planned</span>
+                        </div>
+                        <div class="grid md:grid-cols-3 gap-4 text-sm">
+                            <p><strong>🌅 Morning:</strong> ${plan.m}</p>
+                            <p><strong>☀️ Afternoon:</strong> ${plan.a}</p>
+                            <p><strong>🌙 Evening:</strong> ${plan.e}</p>
+                        </div>
+                    </div>
+                `;
+            }
+
+            htmlContent += `</div></div>`;
+            resultDiv.innerHTML = htmlContent;
+            resultDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

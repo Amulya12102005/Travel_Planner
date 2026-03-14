@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | TravelEase</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-50 flex flex-col min-h-screen">
+
+    <nav class="sticky top-0 z-50 bg-white shadow-md px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="text-2xl font-bold text-[#2E86C1]">TravelEase</div>
+            <button id="menu-btn" class="md:hidden text-gray-700">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+            <ul class="hidden md:flex space-x-8 font-semibold">
+                <li><a href="index.html" class="hover:text-[#F39C12]">Home</a></li>
+                <li><a href="about.html" class="text-[#F39C12]">About</a></li>
+                <li><a href="contact.html" class="hover:text-[#F39C12]">Contact</a></li>
+            </ul>
+        </div>
+        <div id="mobile-menu" class="hidden flex flex-col space-y-4 mt-4 md:hidden">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+
+    <main class="flex-grow container mx-auto px-6 py-16">
+        <h1 class="text-4xl font-bold text-center text-[#2E86C1] mb-10">Why We Plan</h1>
+        <div class="max-w-3xl mx-auto text-center">
+            <p class="text-lg text-gray-600 mb-8">TravelEase was built for the explorers who hate spreadsheets. We make it easy to see the world with the people you love.</p>
+            
+            <div class="aspect-video rounded-2xl overflow-hidden shadow-2xl mb-10">
+                <iframe class="w-full h-full" src="https://www.youtube.com/embed/P_m9vK179L0" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-900 text-white py-6 text-center">
+        <p>© 2026 TravelEase</p>
+    </footer>
+
+    <script>
+        document.getElementById('menu-btn').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

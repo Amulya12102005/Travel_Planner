@@ -1,0 +1,62 @@
+/* 1. CSS VARIABLES - Easy to maintain colors */
+:root {
+    --primary-color: #2E86C1;    /* Ocean Blue */
+    --secondary-color: #F39C12;  /* Sunset Orange */
+    --bg-light: #F3F4F6;         /* Light Gray Background */
+    --text-dark: #1F2937;        /* Dark Gray Text */
+}
+
+/* 2. GLOBAL RESET & SCROLLING */
+html {
+    scroll-behavior: smooth; /* Smooth scrolling for ID navigation */
+}
+
+body {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+/* 3. TYPOGRAPHY (Google Fonts) */
+h1, h2, h3, .brand-logo {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+p, span, label, a, input, textarea {
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* 4. NAVIGATION HIGHLIGHTS */
+.nav-link {
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--secondary-color) !important;
+}
+
+/* 5. CUSTOM BUTTON STYLING */
+.btn-primary {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover {
+    background-color: #e67e22; /* Slightly darker orange */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* 6. RESPONSIVE MAP & VIDEO CONTAINERS */
+.embed-container {
+    border: 4px solid white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
